@@ -7,7 +7,9 @@ gspread~=6.2.1
 python-dotenv~=1.1.1
 Все библиотеки записаны в файле requirements.txt
 Установка зависимостей:
-`pip install -r requirements.txt`
+\```
+pip install -r requirements.txt
+\```
 Или установка каждой библиотеки по отдельности
 ## Запуск бота
 Для запуска бота понадобиться: 
