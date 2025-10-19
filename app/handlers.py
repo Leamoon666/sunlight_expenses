@@ -1,3 +1,4 @@
+import logging
 from aiogram import F, Router
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
@@ -15,8 +16,12 @@ async def get_help(message: Message):
     await message.answer(app.templates_msg.help_msg)
 
 @router.message(F.text)
-async def how_are_you(message: Message):
+async def get_message(message: Message):
     try:
-        await message.reply(f"{process_phrase(message.text)}")
-    except:
+        result = process_phrase(message.text)
+        await message.reply(f"Данные добавлены: {result}")
+    except ValueError as e:
+        await message.reply(f"Ошибка ввода: {str(e)}")
+    except Exception as e:
+        logging.error(f"Неожиданная ошибка: {e}")
         await message.reply(app.templates_msg.error_msg)
